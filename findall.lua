@@ -163,12 +163,25 @@ function get_player_name()
 end
 
 
-function get_files_in_dir(path, filter)
-    dir = ashita.fs.get_dir(path, '.*');
+-- function get_files_in_dir(path, filter)
+--     dir = ashita.fs.get_dir(path, '.*');
        
-    return dir;
-end
+--     return dir;
+-- end
 
+function get_files_in_dir(path, filter)
+    local dir = ashita.fs.get_dir(path, '.*')
+
+    -- Filter out .gitignore files
+    local filtered_dir = {}
+    for _, filename in ipairs(dir) do
+        if not string.match(filename, "%.gitignore$") then
+            table.insert(filtered_dir, filename)
+        end
+    end
+
+    return filtered_dir
+end
 
 function get_storage_path()
     return addon.path.. '\\data';
