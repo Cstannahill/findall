@@ -60,5 +60,5 @@ Show all the items stored on "omega".
 
 ## Changelog
 
-### v1.20170501
-* first port
+### v1.0
+* first port to Ashita v4
